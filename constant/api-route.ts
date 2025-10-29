@@ -1,0 +1,1 @@
+export const API_URL = process.env.NEXT_PUBLIC_SPARTAN_MEDIA_DASHBOARD_API_URL || 'http://localhost:3001/api';
