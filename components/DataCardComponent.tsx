@@ -35,14 +35,17 @@ export const DataCard = ({day}: {day: string}) => {
         </div>
         }
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {Object.entries(data || {}).map(([key, value]) => (
-            <div key={key} className="rounded-lg shadow-md p-6 text-center bg-[#131C30]">
-                <h3 className="text-lg font-black text-[#90A1B9] mb-2">
-                    {key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                </h3>
-                <p className="text-5xl text-[#F1F5F9]">{JSON.stringify(value)}</p>
-            </div>
-            ))}
+            {Object.entries(data || {}).map(([key, value]) => {
+                if (key === 'edited' || key === 'uploaded') return null;
+                return (
+                <div key={key} className="rounded-lg shadow-md p-6 text-center bg-[#131C30]">
+                    <h3 className="text-lg font-black text-[#90A1B9] mb-2">
+                        {key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                    </h3>
+                    <p className="text-5xl text-[#F1F5F9]">{JSON.stringify(value)}</p>
+                </div>
+                )
+            })}
         </div>
     </div>
     )
